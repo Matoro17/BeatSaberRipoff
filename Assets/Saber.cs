@@ -11,14 +11,19 @@ public class Saber : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
+        Ray ray = new Ray(transform.position, Vector3.forward);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position,transform.forward, out hit,1,layer))
+
+        if (Physics.Raycast(ray, out hit,1,layer))
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
             if (Vector3.Angle(transform.position- previousPos, hit.transform.up)>130)
             {
+                Debug.Log("Destroy");
                 Destroy(hit.transform.gameObject);
             }
         }

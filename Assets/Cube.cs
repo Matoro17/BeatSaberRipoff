@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cube : MonoBehaviour {
-    
+
+    public GameObject left;
+    public GameObject right;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,4 +17,5 @@ public class Cube : MonoBehaviour {
         transform.position += Time.deltaTime * transform.forward * 2;
 
 	}
+
 }
